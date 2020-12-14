@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>CardChecker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card" id="app">
+
+        <!-- Здесь будет выводиться ЛОГОТИП БАНКА -->
+        <div class="bank">
+            <img v-bind:src=" 'img/banks/' + bankk + '.png' " v-if='bankk'>
+        </div>
+
+        <!-- Поле для ввода НОМЕРА КАРТЫ -->
+        <div class="number-container">
+            <input class ="input" v-bind:class="{'input-ok': input, 'input-err':!input}" type="text" placeholder="Номер карты" v-model="number">
+            <div class="status" v-bind:class="{'status-ok' : status, 'status-err' : !status}" ></div>
+        </div>
+
+        <!-- Поле для ввода ИМЕНИ ДЕРЖАТЕЛЯ -->
+        <div class="name-container">
+            <input type="inputt" placeholder="Имя держателя" v-bind:class="{'input-ok': inputt, 'input-err':!inputt}" type="text" v-model="text">
+            <div class="statuss" v-bind:class="{'status-ok' : statuss, 'status-err' : !statuss}" ></div>
+        </div>
+        <!-- Логотип ПЛАТЕЖНОЙ СИСТЕМЫ -->
+        <div class="pay-system">
+            <img v-bind:src=" 'img/systems/' + paysys + '.png' " v-if="paysys">
+        </div>
+
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+    'use strict';
+
+    const vm = new Vue({
+        el: '#app',
+        data: {
+            number: "",
+            alph:"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ",
+            text: ""
+        },
+        computed: {
+            paysys(){
+                if(this.number[0] == '2')
+                    return 'mir';
+                if(this.number[0] == '3')
+                    return 'american-exp';
+                if(this.number[0] == '4')
+                    return 'visa';
+                if(this.number[0] == '5')
+                    return 'mastercard';
+                if(this.number[0] == '6')
+                    return 'maestro';
+            },
+            status(){
+                return this.number.length == 16;
+            },
+            input(){
+                return this.number.length == 16;
+            },
+            bankk(){
+                if(this.number.substring(0,6) == '521178')
+                    return 'alpha';
+                if(this.number.substring(0,6) == '548673')
+                    return 'alpha';
+                if(this.number.substring(0,6) == '548601')
+                    return 'alpha';
+                if(this.number.substring(0,6) == '415428')
+                    return 'alpha';
+                if(this.number.substring(0,6) == '676371')
+                    return 'alpha';
+                if(this.number.substring(0,6) == '477964')
+                    return 'alpha';
+                if(this.number.substring(0,6) == '479004')
+                    return 'alpha';
+
+                if(this.number.substring(0,6) == '427229')
+                    return 'vtb';
+                if(this.number.substring(0,6) == '527883')
+                    return 'vtb';
+                if(this.number.substring(0,6) == '447520')
+                    return 'vtb';
+
+                if(this.number.substring(0,6) == '548999')
+                    return 'gazprombank';
+                if(this.number.substring(0,6) == '526483')
+                    return 'gazprombank';
+
+                if(this.number.substring(0,6) == '533736')
+                    return 'mts-bank';
+                if(this.number.substring(0,6) == '540616')
+                    return 'mts-bank';
+
+                if(this.number.substring(0,6) == '434146')
+                    return 'otkrytie';
+                if(this.number.substring(0,6) == '405870')
+                    return 'otkrytie';
+                if(this.number.substring(0,6) == '544573')
+                    return 'otkrytie';
+                if(this.number.substring(0,6) == '532301')
+                    return 'otkrytie';
+
+                if(this.number.substring(0,6) == '440503')
+                    return 'rosbank';
+                if(this.number.substring(0,6) == '554761')
+                    return 'rosbank';
+
+                if(this.number.substring(0,6) == '513691')
+                    return 'russian_standart';
+                if(this.number.substring(0,6) == '510047')
+                    return 'russian_standart';
+
+                if(this.number.substring(0,6) == '462730')
+                    return 'raiffaizen';
+                if(this.number.substring(0,6) == '462729')
+                    return 'raiffaizen';
+
+                if(this.number.substring(0,6) == '427683')
+                    return 'sberbank';
+                if(this.number.substring(0,6) == '427901')
+                    return 'sberbank';
+                if(this.number.substring(0,6) == '427644')
+                    return 'sberbank';
+                if(this.number.substring(0,6) == '427601')
+                    return 'sberbank';
+                if(this.number.substring(0,6) == '427901')
+                    return 'sberbank';
+                if(this.number.substring(0,6) == '427631')
+                    return 'sberbank';
+                if(this.number.substring(0,6) == '427638')
+                    return 'sberbank';
+                if(this.number.substring(0,6) == '546938')
+                    return 'sberbank';
+
+                if(this.number.substring(0,6) == '521324')
+                    return 'tinkoff';
+                if(this.number.substring(0,6) == '437773')
+                    return 'tinkoff';
+                },
+            statuss(){
+                return this.text.indexOf("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ");
+            },
+            inputt(){
+                return this.text.indexOf("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ");
+            },
+        }
+    });
+
+    </script>
+</html>
